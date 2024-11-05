@@ -68,7 +68,7 @@ Delete review
 ![Delete review](./final_project/screenshots/9-deletereview.png)
 
 ## Acknowledgements
-This project was developed as part of the IBM Full Stack Software Developer Specialization on Coursera. It provided valuable insights into creating component-based front-end applications using React.
+This project was developed as part of the IBM Full Stack Software Developer Specialization on Coursera. It provided valuable insights into creating back-end applications using Node.js and Express.
 
 ## License
 This project is open-source and available under the Apache 2.0 License.
