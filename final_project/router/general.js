@@ -22,29 +22,58 @@ public_users.post("/register", (req,res) => {
 
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
-    res.send(books);
+    // res.send(books); //Task 1
+
+    // Task 10
+    return new Promise((resolve,reject) => {
+        resolve(books);
+    })
 });
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
-    const isbn = req.params.isbn;
-    res.send(books[isbn]);
+    // const isbn = req.params.isbn; //Task 2
+    // res.send(books[isbn]); //Task 2
+
+    // Task 11
+    return new Promise((resolve,reject) => {
+        const isbn = req.params.isbn;
+        if(books[isbn]) {
+            resolve(books[isbn]);
+        } else {
+            reject({ status: 404, message: `ISBN ${isbn} not found`});
+        }
+    });
 });
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
-    const author = req.params.author;
-    let filtered_books = Object.entries(books)
-        .filter(([isbn, book]) => book.author === author)
-        .map(([isbn, book]) => ({
-            isbn: isbn,
-            title: book.title,
-            reviews: book.reviews
-        }));
-    const response = {
-        booksByAuthor: filtered_books
-    };
-    res.send(response);
+    // Task 3
+    // const author = req.params.author;
+    // let filtered_books = Object.entries(books)
+    //     .filter(([isbn, book]) => book.author === author)
+    //     .map(([isbn, book]) => ({
+    //         isbn: isbn,
+    //         title: book.title,
+    //         reviews: book.reviews
+    //     }));
+    // const response = {
+    //     booksByAuthor: filtered_books
+    // };
+    // res.send(response);
+
+
+    // Task 12
+    return new Promise((resolve,reject) => {
+        const author = req.params.author;
+        let filtered_books = Object.entries(books)
+            .filter(([isbn, book]) => book.author === author);
+        if(filtered_books > 0) {
+            resolve(filtered_books);
+        } else {
+            reject("Book not found");
+        }
+    })
 });
 
 // Get all books based on title
