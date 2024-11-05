@@ -26,7 +26,7 @@ app.use("/customer/auth/*", function auth(req,res,next){
     }
 });
  
-const PORT=5002;
+const PORT=5001;
 
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);
